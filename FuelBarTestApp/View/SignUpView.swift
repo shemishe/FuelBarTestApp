@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  SignUpView.swift
 //  FuelBarTestApp
 //
 //  Created by Sherman Shi on 6/8/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginView: UIView {
+class SignUpView: UIView {
     
     // MARK: - Properties
     
@@ -25,6 +25,11 @@ class LoginView: UIView {
         return view.textContainerView(view: view, #imageLiteral(resourceName: "mail-image"), emailTextField)
     }()
     
+    lazy var usernameContainerView: UIView = {
+        let view = UIView()
+        return view.textContainerView(view: view, #imageLiteral(resourceName: "user-image"), usernameTextField)
+    }()
+    
     lazy var passwordContainerView: UIView = {
         let view = UIView()
         return view.textContainerView(view: view, #imageLiteral(resourceName: "lock-image"), passwordTextField)
@@ -35,14 +40,19 @@ class LoginView: UIView {
         return tf.textField(withPlaceholder: "Email", isSecureTextEntry: false)
     }()
     
+    lazy var usernameTextField: UITextField = {
+        let tf = UITextField()
+        return tf.textField(withPlaceholder: "Username", isSecureTextEntry: false)
+    }()
+    
     lazy var passwordTextField: UITextField = {
         let tf = UITextField()
         return tf.textField(withPlaceholder: "Password", isSecureTextEntry: true)
     }()
     
-    let loginButton: UIButton = {
+    let signupButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("LOG IN", for: .normal)
+        button.setTitle("SIGN UP", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.setTitleColor(UIColor.dimGray(), for: .normal)
         button.backgroundColor = .white
@@ -50,13 +60,15 @@ class LoginView: UIView {
         return button
     }()
     
-    let dontHaveAccountButton: UIButton = {
+    let alreadyHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white])
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white])
         attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white]))
         button.setAttributedTitle(attributedTitle, for: .normal)
         return button
     }()
+    
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,14 +91,18 @@ class LoginView: UIView {
         self.addSubview(emailContainerView)
         emailContainerView.anchorwithConstant(top: logoImageView.bottomAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 24, paddingBottom: 0, paddingLeading: 32, paddingTrailing: 32, width: 0, height: 50)
         
+        self.addSubview(usernameContainerView)
+        usernameContainerView.anchorwithConstant(top: emailContainerView.bottomAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 16, paddingBottom: 0, paddingLeading: 32, paddingTrailing: 32, width: 0, height: 50)
+        
         self.addSubview(passwordContainerView)
-        passwordContainerView.anchorwithConstant(top: emailContainerView.bottomAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 16, paddingBottom: 0, paddingLeading: 32, paddingTrailing: 32, width: 0, height: 50)
+        passwordContainerView.anchorwithConstant(top: usernameTextField.bottomAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 16, paddingBottom: 0, paddingLeading: 32, paddingTrailing: 32, width: 0, height: 50)
         
-        self.addSubview(loginButton)
-        loginButton.anchorwithConstant(top: passwordContainerView.bottomAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 24, paddingBottom: 0, paddingLeading: 32, paddingTrailing: 32, width: 0, height: 50)
+        self.addSubview(signupButton)
+        signupButton.anchorwithConstant(top: passwordContainerView.bottomAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 24, paddingBottom: 0, paddingLeading: 32, paddingTrailing: 32, width: 0, height: 50)
         
-        self.addSubview(dontHaveAccountButton)
-        dontHaveAccountButton.anchorwithConstant(top: nil, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 0, paddingBottom: 20, paddingLeading: 32, paddingTrailing: 32, width: 0, height: 50)
+        self.addSubview(alreadyHaveAccountButton)
+        alreadyHaveAccountButton.anchorwithConstant(top: nil, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 0, paddingBottom: 20, paddingLeading: 32, paddingTrailing: 32, width: 0, height: 50)
     }
+    
     
 }

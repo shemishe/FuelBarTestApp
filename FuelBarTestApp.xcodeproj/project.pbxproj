@@ -19,6 +19,8 @@
 		E99A952322A3943E0039D934 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E99A952222A3943E0039D934 /* GoogleService-Info.plist */; };
 		E99A952522AC383A0039D934 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A952422AC383A0039D934 /* HomeView.swift */; };
 		E99A952722AC38590039D934 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A952622AC38590039D934 /* LoginView.swift */; };
+		E99A952922AC4B4B0039D934 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A952822AC4B4B0039D934 /* SignUpView.swift */; };
+		E99A952C22AE1B340039D934 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A952B22AE1B340039D934 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		E99A952222A3943E0039D934 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E99A952422AC383A0039D934 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E99A952622AC38590039D934 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E99A952822AC4B4B0039D934 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		E99A952B22AE1B340039D934 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		E99A951422A253BA0039D934 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E99A952B22AE1B340039D934 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				E99A952622AC38590039D934 /* LoginView.swift */,
+				E99A952822AC4B4B0039D934 /* SignUpView.swift */,
 				E99A952422AC383A0039D934 /* HomeView.swift */,
 			);
 			path = View;
@@ -265,10 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99A952C22AE1B340039D934 /* Model.swift in Sources */,
 				E99A952022A2543D0039D934 /* Extensions.swift in Sources */,
 				E99A952722AC38590039D934 /* LoginView.swift in Sources */,
 				E99A951E22A254200039D934 /* HomeController.swift in Sources */,
 				E99A950322A2539E0039D934 /* AppDelegate.swift in Sources */,
+				E99A952922AC4B4B0039D934 /* SignUpView.swift in Sources */,
 				E99A952522AC383A0039D934 /* HomeView.swift in Sources */,
 				E99A951A22A253F20039D934 /* LoginController.swift in Sources */,
 				E99A951C22A254150039D934 /* SignUpController.swift in Sources */,
