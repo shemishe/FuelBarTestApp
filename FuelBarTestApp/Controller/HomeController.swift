@@ -13,14 +13,7 @@ class HomeController: UIViewController {
     
     // MARK: - Properties
     
-    var welcomeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 28)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.alpha = 0
-        return label
-    }()
+    var homeView: HomeView { return self.view as! HomeView }
     
     // MARK: - Selectors
     
@@ -39,6 +32,10 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         authenticateUserAndConfigureView()
     }
+    
+    override func loadView() {
+        self.view = HomeView(frame: UIScreen.main.bounds)
+    }
 
     // MARK: - API
     
@@ -46,10 +43,10 @@ class HomeController: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Database.database().reference().child("Users").child(uid).child("username").observeSingleEvent(of: .value) { (snapshot) in
             guard let username = snapshot.value as? String else { return }
-            self.welcomeLabel.text = "Welcome, \(username)"
+//            self.homeView.welcomeLabel.text = "Welcome, \(username)"
             
             UIView.animate(withDuration: 0.5, animations: {
-                self.welcomeLabel.alpha = 1
+//                self.homeView.welcomeLabel.alpha = 1
             })
         }
     }
@@ -81,17 +78,15 @@ class HomeController: UIViewController {
     // MARK: - Helper Functions
     
     func configureViewComponents() {
-        view.backgroundColor = UIColor.dimGray()
-        
         navigationItem.title = "Firebase logged in"
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "left-arrow3"), style: .plain, target: self, action: #selector(handleSignOut))
+        navigationController?.navigationBar.isHidden = true
+        
+        homeView.signOutButton.addTarget(self, action: #selector(handleSignOut), for: .touchUpInside)
+        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "left-arrow3"), style: .plain, target: self, action: #selector(handleSignOut))
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationController?.navigationBar.barTintColor = UIColor.dimGray()
-        
-        view.addSubview(welcomeLabel)
-        welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        welcomeLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
 }

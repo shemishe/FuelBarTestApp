@@ -11,6 +11,8 @@ import Firebase
 
 class SignUpController: UIViewController {
     
+    // MARK: - Properties
+    
     var signUpView: SignUpView { return self.view as! SignUpView }
     
     // MARK: - Init

@@ -21,6 +21,7 @@
 		E99A952722AC38590039D934 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A952622AC38590039D934 /* LoginView.swift */; };
 		E99A952922AC4B4B0039D934 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A952822AC4B4B0039D934 /* SignUpView.swift */; };
 		E99A952C22AE1B340039D934 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A952B22AE1B340039D934 /* Model.swift */; };
+		E99A952E22AE20DF0039D934 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A952D22AE20DF0039D934 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		E99A952622AC38590039D934 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E99A952822AC4B4B0039D934 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		E99A952B22AE1B340039D934 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		E99A952D22AE20DF0039D934 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				E99A951F22A2543D0039D934 /* Extensions.swift */,
+				E99A952D22AE20DF0039D934 /* Alert.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				E99A952922AC4B4B0039D934 /* SignUpView.swift in Sources */,
 				E99A952522AC383A0039D934 /* HomeView.swift in Sources */,
 				E99A951A22A253F20039D934 /* LoginController.swift in Sources */,
+				E99A952E22AE20DF0039D934 /* Alert.swift in Sources */,
 				E99A951C22A254150039D934 /* SignUpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

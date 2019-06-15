@@ -35,7 +35,18 @@ class LoginController: UIViewController {
         guard let email = loginView.emailTextField.text else { return }
         guard let password = loginView.passwordTextField.text else { return }
         
-        logUserIn(withEmail: email, password: password)
+        do {
+            try logUserIn(withEmail: email, password: password)
+            
+        } catch Model.LoginError.incompleteForm {
+            Alert.showBasic(title: "Incomplete Form", message: "Please fill out both email and password fields.", vc: self)
+        } catch Model.LoginError.invalidEmail {
+            Alert.showBasic(title: "Invalid Email Format", message: "Please make sure you format your email correctly.", vc: self)
+        } catch Model.LoginError.incorrectPasswordLength {
+            Alert.showBasic(title: "Password Too Short", message: "Password should be at least 6 characters.", vc: self)
+        } catch {
+            Alert.showBasic(title: "Unable to Login", message: "There was an error when attempting to login.", vc: self)
+        }
     }
     
     @objc func handleShowSignUp() {
@@ -44,24 +55,8 @@ class LoginController: UIViewController {
     
     // MARK: - API
     
-    func logUserIn(withEmail email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            
-            if let error = error {
-                print("failed to sign user in with error: ", error.localizedDescription)
-                return
-            }
-            guard let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
-            guard let controller = navController.viewControllers[0] as? HomeController else { return }
-            controller.configureViewComponents()
-            
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    // MARK: - Helper Functions
-    
-    func login() throws {
+    func logUserIn(withEmail email: String, password: String) throws {
+        
         let email = loginView.emailTextField.text!
         let password = loginView.passwordTextField.text!
         
@@ -74,7 +69,20 @@ class LoginController: UIViewController {
         }
         
         if password.count < 6 {
-            throw Model.LoginError.incorrectPasswordLength 
+            throw Model.LoginError.incorrectPasswordLength
+        }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            
+            if let error = error {
+                print("failed to sign user in with error: ", error.localizedDescription)
+                return
+            }
+            guard let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
+            guard let controller = navController.viewControllers[0] as? HomeController else { return }
+            controller.configureViewComponents()
+            
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
